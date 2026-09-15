@@ -3,100 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Destination C1&C2 — Unit 1: Present time</title>
+<title>Destination C1&C2 — Grammar Units</title>
 <style>
   :root{
-    --green:#4f8a2f;
-    --green-dark:#2f5a1c;
-    --green-pale:#eaf4e2;
-    --line:#cfe3c2;
-    --ink:#20291a;
-    --paper:#ffffff;
-    --bad:#b4362a;
-    --bad-bg:#fbeae8;
-    --good:#2f7a3d;
-    --good-bg:#e8f5ea;
-    --muted:#5b6b52;
+    --green:#4f8a2f; --green-dark:#2f5a1c; --green-pale:#eaf4e2; --line:#cfe3c2;
+    --ink:#20291a; --paper:#ffffff; --bad:#b4362a; --bad-bg:#fbeae8;
+    --good:#2f7a3d; --good-bg:#e8f5ea; --muted:#5b6b52;
   }
   *{box-sizing:border-box;}
-  body{
-    margin:0; font-family:'Segoe UI', Roboto, Arial, sans-serif;
-    background:#f2f4ee; color:var(--ink); line-height:1.5;
-  }
+  body{margin:0; font-family:'Segoe UI', Roboto, Arial, sans-serif; background:#f2f4ee; color:var(--ink); line-height:1.5;}
   header.top{
-    background:var(--green-dark); color:#fff; padding:14px 18px;
-    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;
+    background:var(--green-dark); color:#fff; padding:12px 18px;
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;
     position:sticky; top:0; z-index:20; box-shadow:0 2px 6px rgba(0,0,0,.15);
   }
-  header.top .titles{display:flex; flex-direction:column;}
-  header.top .book{font-size:12px; opacity:.8; letter-spacing:.02em;}
-  header.top .unit{font-size:18px; font-weight:700;}
+  header.top .left{display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
+  select#unitSelect{
+    background:var(--green); color:#fff; border:1px solid rgba(255,255,255,.4); border-radius:6px;
+    padding:8px 12px; font-size:14px; font-weight:700; font-family:inherit;
+  }
   header.top .score{font-size:13px; background:rgba(255,255,255,.15); padding:6px 12px; border-radius:20px;}
-  nav.tabs{
-    display:flex; overflow-x:auto; background:var(--green); position:sticky; top:56px; z-index:19;
-    box-shadow:0 2px 4px rgba(0,0,0,.08);
-  }
-  nav.tabs button{
-    flex:0 0 auto; background:none; border:none; color:#fff; padding:10px 16px;
-    font-size:14px; font-weight:600; cursor:pointer; opacity:.8; border-bottom:3px solid transparent;
-    white-space:nowrap;
-  }
+  nav.tabs{display:flex; overflow-x:auto; background:var(--green); position:sticky; top:53px; z-index:19; box-shadow:0 2px 4px rgba(0,0,0,.08);}
+  nav.tabs button{flex:0 0 auto; background:none; border:none; color:#fff; padding:10px 16px; font-size:14px; font-weight:600; cursor:pointer; opacity:.8; border-bottom:3px solid transparent; white-space:nowrap;}
   nav.tabs button.active{opacity:1; border-bottom-color:#fff; background:rgba(255,255,255,.12);}
-  nav.tabs button .dot{
-    display:inline-block; width:7px; height:7px; border-radius:50%; margin-left:6px; vertical-align:middle;
-    background:rgba(255,255,255,.35);
-  }
+  nav.tabs button .dot{display:inline-block; width:7px; height:7px; border-radius:50%; margin-left:6px; vertical-align:middle; background:rgba(255,255,255,.35);}
   nav.tabs button .dot.done{background:#fff;}
   main{max-width:820px; margin:0 auto; padding:20px 16px 80px;}
   .panel{background:var(--paper); border:1px solid var(--line); border-radius:6px; padding:20px 22px; margin-bottom:16px;}
-  .pill{
-    display:inline-block; background:var(--green); color:#fff; font-weight:700; font-size:15px;
-    padding:6px 16px; border-radius:16px; margin-bottom:14px;
-  }
-  .ref h3.pill{margin-top:22px;}
+  .pill{display:inline-block; background:var(--green); color:#fff; font-weight:700; font-size:15px; padding:6px 16px; border-radius:16px; margin-bottom:14px;}
   table.ref-table{width:100%; border-collapse:collapse; margin-bottom:14px; font-size:14.5px;}
   table.ref-table td{border:1px solid var(--line); padding:8px 10px; vertical-align:top;}
   table.ref-table td:first-child{width:38%; color:var(--muted);}
   .box{border:1px solid var(--line); border-radius:4px; padding:10px 14px; margin-bottom:14px; font-size:14.5px;}
-  .box b{color:var(--green-dark);}
-  .watch{
-    display:flex; gap:12px; border:2px solid var(--green); border-radius:4px; margin-bottom:14px; overflow:hidden;
-  }
-  .watch .tag{
-    background:var(--green); color:#fff; writing-mode:vertical-rl; text-orientation:mixed; transform:rotate(180deg);
-    padding:8px 6px; font-weight:700; font-size:13px; letter-spacing:.02em; flex:0 0 auto;
-  }
+  .watch{display:flex; gap:12px; border:2px solid var(--green); border-radius:4px; margin-bottom:14px; overflow:hidden;}
+  .watch .tag{background:var(--green); color:#fff; writing-mode:vertical-rl; text-orientation:mixed; transform:rotate(180deg); padding:8px 6px; font-weight:700; font-size:13px; letter-spacing:.02em; flex:0 0 auto;}
   .watch .body{padding:10px 14px 10px 0; font-size:14.5px;}
   .watch .body ul{margin:0; padding-left:18px;}
   .us-uk{background:var(--green-pale); border:1px solid var(--line); border-radius:4px; padding:12px 14px; margin-bottom:14px; font-size:14.5px;}
   .us-uk .h{font-weight:700; color:var(--green-dark); margin-bottom:6px;}
   .instr{font-size:15px; margin-bottom:14px; color:#33402b;}
-  .letter{
-    display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px;
-    background:var(--green); color:#fff; font-weight:700; border-radius:4px; margin-right:8px; font-size:14px;
-  }
+  .letter{display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; background:var(--green); color:#fff; font-weight:700; border-radius:4px; margin-right:8px; font-size:14px;}
   .exercise-head{display:flex; align-items:baseline; margin-bottom:10px;}
-  .wordbank{
-    background:var(--green-pale); border:1px dashed var(--green); border-radius:4px; padding:8px 12px;
-    margin-bottom:16px; font-size:14px; font-style:italic; color:var(--green-dark);
-  }
+  .wordbank{background:var(--green-pale); border:1px dashed var(--green); border-radius:4px; padding:8px 12px; margin-bottom:16px; font-size:14px; font-style:italic; color:var(--green-dark);}
   .item{margin-bottom:14px; font-size:15px;}
   .item .num{color:var(--muted); margin-right:6px;}
   .blank-wrap{display:inline-flex; flex-direction:column; align-items:center; margin:0 2px; vertical-align:middle;}
   .hint{font-size:10.5px; color:var(--muted); line-height:1;}
-  input.blank{
-    border:none; border-bottom:2px solid var(--green); background:transparent; font-size:15px;
-    font-family:inherit; padding:2px 4px; text-align:center; min-width:70px; color:var(--ink);
-  }
+  input.blank{border:none; border-bottom:2px solid var(--green); background:transparent; font-size:15px; font-family:inherit; padding:2px 4px; text-align:center; min-width:70px; color:var(--ink);}
   input.blank:focus{outline:none; border-bottom-color:var(--green-dark); background:var(--green-pale);}
   input.blank.correct{background:var(--good-bg); border-bottom-color:var(--good); color:var(--good);}
   input.blank.incorrect{background:var(--bad-bg); border-bottom-color:var(--bad); color:var(--bad);}
   .correction{font-size:12px; color:var(--bad); display:block; margin-top:2px;}
   .choice-wrap{display:inline-flex; gap:6px; margin:2px 4px; vertical-align:middle; flex-wrap:wrap;}
-  .choice-btn{
-    border:1.5px solid var(--green); background:#fff; color:var(--green-dark); padding:4px 10px;
-    border-radius:14px; font-size:13.5px; cursor:pointer; font-family:inherit;
-  }
+  .choice-btn{border:1.5px solid var(--green); background:#fff; color:var(--green-dark); padding:4px 10px; border-radius:14px; font-size:13.5px; cursor:pointer; font-family:inherit;}
   .choice-btn.selected{background:var(--green); color:#fff;}
   .choice-btn.correct{background:var(--good); border-color:var(--good); color:#fff;}
   .choice-btn.incorrect{background:var(--bad); border-color:var(--bad); color:#fff;}
@@ -104,10 +63,7 @@
   .dialogue p{margin:6px 0;}
   .dialogue b{color:var(--green-dark);}
   .actions{display:flex; align-items:center; gap:14px; margin-top:18px;}
-  button.check{
-    background:var(--green); color:#fff; border:none; padding:10px 22px; border-radius:20px;
-    font-size:14px; font-weight:700; cursor:pointer;
-  }
+  button.check{background:var(--green); color:#fff; border:none; padding:10px 22px; border-radius:20px; font-size:14px; font-weight:700; cursor:pointer;}
   button.check:hover{background:var(--green-dark);}
   .result{font-size:14px; font-weight:700;}
   .result.good{color:var(--good);}
@@ -118,58 +74,142 @@
 <body>
 
 <header class="top">
-  <div class="titles">
-    <span class="book">Destination C1&amp;C2 · Grammar</span>
-    <span class="unit">Unit 1 — Present time</span>
+  <div class="left">
+    <span style="font-weight:700;font-size:16px;">Destination C1&amp;C2</span>
+    <select id="unitSelect"></select>
   </div>
   <div class="score" id="scoreBox">0 / 10 exercises checked</div>
 </header>
 
 <nav class="tabs" id="tabs"></nav>
-
 <main id="content"></main>
-
-<footer class="foot">Digitised from Destination C1&amp;C2 (Mann &amp; Taylore-Knowles) for personal study use — pilot build, Unit 1 only.</footer>
+<footer class="foot">Digitised from Destination C1&amp;C2 (Mann &amp; Taylore-Knowles) for personal study use.</footer>
 
 <script>
-/* ================= DATA ================= */
+/* ============ REFERENCE HTML PER UNIT ============ */
 
-const EXERCISES = {
+const REF_1 = `
+  <h3 class="pill">Present perfect simple</h3>
+  <table class="ref-table">
+    <tr><td>Situations and states that started in the past and are still true</td><td>I've been a member of MENSA for over five years.</td></tr>
+    <tr><td>A series of actions continuing up to now</td><td>She's done a BA, an MA and a PhD so far.</td></tr>
+    <tr><td>Completed actions at a time in the past which is not important or relevant</td><td>Have you ever read any books by Edward De Bono?</td></tr>
+    <tr><td>Completed actions where the important thing is the present result</td><td>She's been awarded a scholarship to study at Harvard.</td></tr>
+    <tr><td>Actions completed recently</td><td>I've just received my exam results.</td></tr>
+    <tr><td>The future (in time clauses) — see Unit 5</td><td>Tell me when you've finished the report.</td></tr>
+  </table>
+  <div class="box"><b>Words &amp; phrases often used with it:</b> since / for / it's the first/second/etc time / before / already / yet / ever / just / still / recently / up to now / (up) until now / so far</div>
+  <div class="us-uk"><div class="h">US vs UK grammar</div>
+    In American English the past simple is often used instead of the present perfect simple.<br>
+    US: <i>Did you find the answer yet?</i> &nbsp; UK: <i>Have you found the answer yet?</i><br>
+    US: <i>I already found the answer.</i> &nbsp; UK: <i>I've already found the answer.</i><br><br>
+    In informal American English, <i>gotten</i> is sometimes used instead of <i>got</i> (obtain / become / move).<br>
+    US: <i>I haven't gotten the books yet.</i> &nbsp; UK: <i>I haven't got the books yet.</i>
+  </div>
+  <h3 class="pill">Present perfect continuous</h3>
+  <table class="ref-table">
+    <tr><td>Actions/situations continuing up to the present (or just before it)</td><td>We've all been wondering what to get Tony for his birthday and we just can't decide.</td></tr>
+    <tr><td>The future (in time clauses) — see Unit 5</td><td>I won't take my driving test until I've been having lessons for at least two months.</td></tr>
+  </table>
+  <div class="watch"><div class="tag">Watch out!</div><div class="body"><ul>
+    <li>We usually use the present perfect <b>simple</b> to specify a particular number of times/things. ✓ I've written two essays this week.</li>
+    <li>We usually use the present perfect <b>continuous</b> to emphasise duration. ✓ I've worked here for five years (no emphasis) vs I've been working here for five years (emphasises duration).</li>
+  </ul></div></div>
+  <div class="box"><b>Words &amp; phrases often used with it:</b> since / for / just / all day/week/etc</div>
+  <h3 class="pill">Stative and non-stative uses of verbs</h3>
+  <div class="box">When certain verbs describe states, they're generally used in simple tenses rather than continuous tenses.</div>
+  <table class="ref-table">
+    <tr><td>Communication</td><td>agree, deny, disagree</td></tr>
+    <tr><td>Thinking</td><td>believe, consider, doubt, expect, imagine, know, mean, realise, suppose, suspect, think, understand</td></tr>
+    <tr><td>Existence</td><td>be, exist</td></tr>
+    <tr><td>Emotions</td><td>adore, appeal, appreciate, desire, despise, detest, dislike, envy, fear, feel, forgive, hate, like, love, mind, need, pity, prefer, satisfy, trust, want, wish</td></tr>
+    <tr><td>Perception</td><td>appear, hear, look, notice, recognise, resemble, see, seem, smell, sound, taste</td></tr>
+    <tr><td>Possession &amp; relationships</td><td>belong, concern, consist, contain, cost, depend, equal, fit, have, include, involve, lack, measure, owe, own, possess, suit, weigh</td></tr>
+    <tr><td>Other</td><td>deserve, matter</td></tr>
+  </table>
+  <div class="watch"><div class="tag">Watch out!</div><div class="body">
+    Many of these can also be used in continuous tenses when they describe actions rather than states: appeal, be, consider, depend, feel, have, include, look, mean, mind, see, smell, taste, think, weigh.<br>
+    ✓ I think it's important to know how to use a computer. (state: think = believe)<br>
+    ✓ I'm thinking about going on a computer course. (action: think = consider)
+  </div></div>
+`;
+
+const REF_3 = `
+  <h3 class="pill">Past simple</h3>
+  <table class="ref-table">
+    <tr><td>Single completed actions</td><td>Sony and Philips invented the CD in the early 1980s.</td></tr>
+    <tr><td>Repeated or habitual actions in the past</td><td>We moved house a lot when I was a kid.</td></tr>
+    <tr><td>General truths about the past</td><td>Early clocks were usually very unreliable.</td></tr>
+    <tr><td>Permanent situations/states in the past</td><td>Did the ancient Egyptians have more advanced technology than other civilisations?</td></tr>
+    <tr><td>The main events in a story</td><td>Frank turned on the TV and sat on the sofa.</td></tr>
+    <tr><td>The present (in conditionals — Unit 11)</td><td>If we didn't have computers, what would the world be like?</td></tr>
+    <tr><td>The present (after wish, it's time, would rather — Unit 13)</td><td>I'd rather Michael didn't waste so much time playing video games.</td></tr>
+  </table>
+  <div class="box"><b>Emphatic past simple</b> — to emphasise contrast or strong feeling in the past.<br>
+  ✓ Perhaps our grandparents didn't have e-mail, but they did have the telephone.<br>
+  ✓ I did enjoy our visit to the Science Museum last summer.</div>
+  <div class="us-uk"><div class="h">Past simple vs present perfect simple</div>
+    The past simple refers to periods/moments which are finished; the present perfect refers to periods continuing up to the present.<br>
+    ✓ The nineteenth century saw many technological advances. / ✓ There have been many advances in recent years.<br><br>
+    The past simple is used for a specific time in the past; the present perfect is used when the specific time isn't important, or the present result matters.<br>
+    ✓ I sent my first e-mail six months ago. / ✓ Have you ever sent an e-mail before?
+  </div>
+  <h3 class="pill">Past continuous</h3>
+  <table class="ref-table">
+    <tr><td>Actions in progress at a particular past moment</td><td>Were you chatting to Matt online at midnight last night?</td></tr>
+    <tr><td>Actions in progress around a particular moment</td><td>Many discoveries were being made in physics at the turn of the century.</td></tr>
+    <tr><td>Temporary situations / series of actions</td><td>At the time, I was working for a large software company.</td></tr>
+    <tr><td>Changing / developing situations</td><td>I was getting frustrated with my internet provider so I changed.</td></tr>
+    <tr><td>Annoying/amusing past habits (usually with always)</td><td>Tina was always taking things apart to see how they worked.</td></tr>
+    <tr><td>Background information in a story</td><td>It was raining and people were making their way home.</td></tr>
+    <tr><td>Two actions in progress at the same time</td><td>While I was playing a game, my brother was doing his homework.</td></tr>
+  </table>
+  <div class="watch"><div class="tag">Watch out!</div><div class="body"><ul>
+    <li>Past continuous = background events; past simple = main events. ✓ We were talking about MP3s when Andrea mentioned her website.</li>
+    <li>Regular/repeated past actions use past simple, not past continuous. ✓ When I was a child, I visited my grandmother every week.</li>
+  </ul></div></div>
+  <h3 class="pill">Past perfect simple &amp; continuous</h3>
+  <table class="ref-table">
+    <tr><td>Situations/states before the past</td><td>Had you had your computer long before it broke down?</td></tr>
+    <tr><td>Completed actions before a past moment</td><td>When Dimitra called, I had managed to fix her computer.</td></tr>
+    <tr><td>A series of actions continuing up to a past moment</td><td>By the time of his death, Edison had invented many things.</td></tr>
+    <tr><td>Past perfect continuous — actions continuing up to (or just before) a past moment</td><td>She'd been writing computer games for ten years before she finally had a hit.</td></tr>
+  </table>
+  <h3 class="pill">used to / would</h3>
+  <div class="box"><b>Would</b> — past habits, particularly for the distant past. ✓ The ancient Greeks would rely on the power of slaves.<br>
+  Would is not usually used for past <i>states</i> (use used to instead).</div>
+  <div class="box"><b>Used to</b> — past habits and states. ✓ It used to seem strange to communicate over long distances.</div>
+  <div class="watch"><div class="tag">Watch out!</div><div class="body">
+    <i>Used to</i> ≠ <i>be used to</i> (familiar/no longer strange): ✓ At first mobile messages felt strange, but now everyone's used to it.<br>
+    <i>Get used to</i> = the process of becoming familiar: ✓ People quickly got used to travelling by train.
+  </div></div>
+`;
+
+/* ============ EXERCISE DATA ============ */
+
+const UNITS = [
+{
+  id:'1', title:'Unit 1 — Present time', ref:REF_1,
+  exercises: {
 A: {
   instr: "Write the verb in brackets in the correct form, present simple or present continuous, in each gap.",
   items: [
-    ["My brother {0} a degree at university so I {1} him very often, unfortunately.",
-      [["do","is doing"],["see","don't see"]]],
-    ["Darren {0} usually {1} home until about eight o'clock.",
-      [[null,"doesn't"],["get","get"]]],
-    ["I'm sorry to hear that your parents {0} divorced.",
-      [["get","are getting"]]],
-    ["You {0} to the end of the street and {1} right.",
-      [["go","go"],["turn","turn"]]],
-    ["Why {0} ice {1}?",
-      [[null,"does"],["float","float"]]],
-    ["It's lovely now the evenings {0} longer, isn't it?",
-      [["get","are getting"]]],
-    ["My dad {0} meat at all — he's a vegetarian.",
-      [["eat","doesn't eat"]]],
-    ["Actually, we {0} to The Libertines at all — this is Pete Docherty's second band, Babyshambles.",
-      [["listen","aren't listening"]]],
-    ["A man {0} into a bar. Ouch! Not a good idea to walk into an iron bar!",
-      [["walk","walks"]]],
-    ["{0} you {1} me from your mobile? The line's not very good.",
-      [[null,"Are"],["phone","phoning"]]],
-    ["{0} you often {1} things online?",
-      [[null,"Do"],["order","order"]]],
-    ["There's an Englishman, an Irishman and a Scotsman. They {0} across the desert when one of them {1} a camel in the distance…",
-      [["walk","are walking"],["spot","spots"]]],
-    ["Beckham {0} control of the ball… It's Beckham… And he {1}!",
-      [["have","has"],["score","scores"]]],
-    ["WOMAN {0} €500 MILLION LOTTERY WIN TO CHARITY",
-      [["give","GIVES"]]],
-    ["My dad {0} jokes! They're usually rubbish, though.",
-      [["always / tell","is always telling"]]],
-    ["'Phil {0} ties, does he?' 'Actually, he {1} a tie to work most days.'",
-      [["wear","doesn't wear"],["wear",["does wear","wears"]]]]
+    ["My brother {0} a degree at university so I {1} him very often, unfortunately.", [["do","is doing"],["see","don't see"]]],
+    ["Darren {0} usually {1} home until about eight o'clock.", [[null,"doesn't"],["get","get"]]],
+    ["I'm sorry to hear that your parents {0} divorced.", [["get","are getting"]]],
+    ["You {0} to the end of the street and {1} right.", [["go","go"],["turn","turn"]]],
+    ["Why {0} ice {1}?", [[null,"does"],["float","float"]]],
+    ["It's lovely now the evenings {0} longer, isn't it?", [["get","are getting"]]],
+    ["My dad {0} meat at all — he's a vegetarian.", [["eat","doesn't eat"]]],
+    ["Actually, we {0} to The Libertines at all — this is Pete Docherty's second band, Babyshambles.", [["listen","aren't listening"]]],
+    ["A man {0} into a bar. Ouch! Not a good idea to walk into an iron bar!", [["walk","walks"]]],
+    ["{0} you {1} me from your mobile? The line's not very good.", [[null,"Are"],["phone","phoning"]]],
+    ["{0} you often {1} things online?", [[null,"Do"],["order","order"]]],
+    ["There's an Englishman, an Irishman and a Scotsman. They {0} across the desert when one of them {1} a camel in the distance…", [["walk","are walking"],["spot","spots"]]],
+    ["Beckham {0} control of the ball… It's Beckham… And he {1}!", [["have","has"],["score","scores"]]],
+    ["WOMAN {0} €500 MILLION LOTTERY WIN TO CHARITY", [["give","GIVES"]]],
+    ["My dad {0} jokes! They're usually rubbish, though.", [["always / tell","is always telling"]]],
+    ["'Phil {0} ties, does he?' 'Actually, he {1} a tie to work most days.'", [["wear","doesn't wear"],["wear",["does wear","wears"]]]]
   ]
 },
 B: {
@@ -239,26 +279,16 @@ E: {
   instr: "Write a verb from the box in the correct form, present simple or present continuous, in each pair of sentences.",
   bank: "appeal • be • consider • depend • feel • have • look • see • smell • think",
   items: [
-    ["<b>A</b> I {0} for a book on fly fishing. Do you have any in stock?<br><b>B</b> Stan {1} like he's in a bad mood this morning.",
-      [[null,"am looking"],[null,"looks"]]],
-    ["<b>A</b> How {0} you {1} about inviting Jackie to come with us on Saturday?<br><b>B</b> Britney {2} very well, so I've told her she can go home.",
-      [[null,"do"],[null,"feel"],[null,["doesn't feel","isn't feeling"]]]],
-    ["<b>A</b> Jan and I {0} buying a new flat.<br><b>B</b> Why {1} you {2} Ray Davis to be a better songwriter than Paul McCartney?",
-      [[null,"are considering"],[null,"do"],[null,"consider"]]],
-    ["<b>A</b> We {0} a barbecue right now, so can I call you back this evening?<br><b>B</b> {1} the Deacons {2} a swimming pool?",
-      [[null,"are having"],[null,"Do"],[null,"have"]]],
-    ["<b>A</b> The idea of going to a Greek island really {0} to me.<br><b>B</b> Police {1} for witnesses to the attack.",
-      [[null,"appeals"],[null,"are appealing"]]],
-    ["<b>A</b> This chicken {0} very fresh. I think I'll throw it away just to be on the safe side.<br><b>B</b> Why {1} you {2} that chicken, Mum?",
-      [[null,"doesn't smell"],[null,"are"],[null,"smelling"]]],
-    ["<b>A</b> I {0} on you, James. Don't let me down!<br><b>B</b> Whether we get there by six {1} on the traffic.",
-      [[null,"am depending"],[null,"depends"]]],
-    ["<b>A</b> Julian {0} a bit busy at the moment, actually.<br><b>B</b> Guys, you {1} too noisy! Can't you keep it down, please?",
-      [[null,"is"],[null,["are being","are"]]]],
-    ["<b>A</b> {0} you {1} Bob would like a CD for his birthday?<br><b>B</b> Oliver said he {2} about moving out of the city.",
-      [[null,"Do"],[null,"think"],[null,"is thinking"]]],
-    ["<b>A</b> I hear that Doug {0} quite a lot of Katy these days. Is that true?<br><b>B</b> I {1} Manchester United lost again.",
-      [[null,"is seeing"],[null,"see"]]]
+    ["<b>A</b> I {0} for a book on fly fishing. Do you have any in stock?<br><b>B</b> Stan {1} like he's in a bad mood this morning.", [[null,"am looking"],[null,"looks"]]],
+    ["<b>A</b> How {0} you {1} about inviting Jackie to come with us on Saturday?<br><b>B</b> Britney {2} very well, so I've told her she can go home.", [[null,"do"],[null,"feel"],[null,["doesn't feel","isn't feeling"]]]],
+    ["<b>A</b> Jan and I {0} buying a new flat.<br><b>B</b> Why {1} you {2} Ray Davis to be a better songwriter than Paul McCartney?", [[null,"are considering"],[null,"do"],[null,"consider"]]],
+    ["<b>A</b> We {0} a barbecue right now, so can I call you back this evening?<br><b>B</b> {1} the Deacons {2} a swimming pool?", [[null,"are having"],[null,"Do"],[null,"have"]]],
+    ["<b>A</b> The idea of going to a Greek island really {0} to me.<br><b>B</b> Police {1} for witnesses to the attack.", [[null,"appeals"],[null,"are appealing"]]],
+    ["<b>A</b> This chicken {0} very fresh. I think I'll throw it away just to be on the safe side.<br><b>B</b> Why {1} you {2} that chicken, Mum?", [[null,"doesn't smell"],[null,"are"],[null,"smelling"]]],
+    ["<b>A</b> I {0} on you, James. Don't let me down!<br><b>B</b> Whether we get there by six {1} on the traffic.", [[null,"am depending"],[null,"depends"]]],
+    ["<b>A</b> Julian {0} a bit busy at the moment, actually.<br><b>B</b> Guys, you {1} too noisy! Can't you keep it down, please?", [[null,"is"],[null,["are being","are"]]]],
+    ["<b>A</b> {0} you {1} Bob would like a CD for his birthday?<br><b>B</b> Oliver said he {2} about moving out of the city.", [[null,"Do"],[null,"think"],[null,"is thinking"]]],
+    ["<b>A</b> I hear that Doug {0} quite a lot of Katy these days. Is that true?<br><b>B</b> I {1} Manchester United lost again.", [[null,"is seeing"],[null,"see"]]]
   ]
 },
 F: {
@@ -280,8 +310,7 @@ G: {
   choice: true,
   items: [
     ["They've {0} over six bags with rubbish from the beach already.", [[null,[["filled","been filling"],"filled"]]]],
-    ["Have you {0} that story in the papers about the elephant that escaped from the zoo? Apparently, they've just {1} it.",
-      [[null,[["followed","been following"],"been following"]],[null,[["caught","been catching"],"caught"]]]],
+    ["Have you {0} that story in the papers about the elephant that escaped from the zoo? Apparently, they've just {1} it.", [[null,[["followed","been following"],"been following"]],[null,[["caught","been catching"],"caught"]]]],
     ["We've {0} the Tower of London, Buckingham Palace and Oxford Street, and we've only been in London for three hours!", [[null,[["seen","been seeing"],"seen"]]]],
     ["It's the first time I've {0} The Editors play live.", [[null,[["heard","been hearing"],"heard"]]]],
     ["Jake and I have {0} about where to go on holiday for weeks but we just can't decide.", [[null,[["thought","been thinking"],"thought"]]]],
@@ -297,10 +326,8 @@ H: {
     ["Is it the first time {0} squid?", [["you / ever / eat","you've ever eaten"]]],
     ["{0} for you for the past two hours. Where {1}?", [["we / wait","We've been waiting"],["you / be","have you been"]]],
     ["{0} an e-mail from Ruth?", [["you / just / receive","Have you just received"]]],
-    ["I'm afraid {0} any milk. {1} a delivery for the past four hours but {2} yet.",
-      [["we / get","we haven't got"],["we / expect","We've been expecting"],["they / show up","they haven't shown up"]]],
-    ["{0} a list of people to invite to the wedding but {1} very far so far. {2} any thoughts about it?",
-      [["I / draw up","I've been drawing up"],["I / get","I haven't got"],["you / have","Have you had"]]],
+    ["I'm afraid {0} any milk. {1} a delivery for the past four hours but {2} yet.", [["we / get","we haven't got"],["we / expect","We've been expecting"],["they / show up","they haven't shown up"]]],
+    ["{0} a list of people to invite to the wedding but {1} very far so far. {2} any thoughts about it?", [["I / draw up","I've been drawing up"],["I / get","I haven't got"],["you / have","Have you had"]]],
     ["Oh, Clair, my {0} to ask you for a while. Would you like to come with us to Wimbledon?", [["mum / mean","mum's been meaning"]]]
   ]
 },
@@ -335,17 +362,161 @@ J: {
       [[null,"have"],[null,"Since"],[null,"been"],[null,["meant","involved"]],[null,"led"],[null,"not"],[null,"do"],[null,"is"],[null,["appears","seems"]],[null,"are"],[null,"There"],[null,"does"],[null,"becoming"],[null,"are"],[null,"has"]]]
   ]
 }
-};
-
-const ORDER = ["ref","A","B","C","D","E","F","G","H","I","J"];
-const LABELS = {ref:"Reference", A:"A", B:"B", C:"C", D:"D", E:"E", F:"F", G:"G", H:"H", I:"I", J:"J"};
-const checkedState = {}; // id -> {correct, total}
-
-/* ================= HELPERS ================= */
-
-function norm(s){
-  return s.toLowerCase().replace(/['’]/g,"'").replace(/\s+/g," ").trim();
+  }
+},
+{
+  id:'3', title:'Unit 3 — Past time', ref:REF_3,
+  exercises: {
+A: {
+  instr: "Circle the correct word or phrase.",
+  choice: true,
+  items: [
+    ["Rick should know about the meeting because I {0} him about it yesterday.", [[null,[["told","have told"],"told"]]]],
+    ["{0} last July while you were both backpacking around Europe?", [[null,[["Did you meet","Have you met"],"Did you meet"]]]],
+    ["I'm resigning because the pressure at work {0} too much for me.", [[null,[["has become","became"],"has become"]]]],
+    ["A month ago, I {0} a letter from Neil, but I haven't replied.", [[null,[["got","have got"],"got"]]]],
+    ["Julie {0} anxious to speak to you since she heard about your accident.", [[null,[["was","has been"],"has been"]]]],
+    ["I {0} no idea you were such a good chess player.", [[null,[["had","have had"],"had"]]]],
+    ["If you {0}, put your hand up and I'll collect your exam paper.", [[null,[["finished","have finished"],"have finished"]]]],
+    ["There {0} a number of different reasons for our divorce.", [[null,[["were","have been"],"were"]]]],
+    ["It was my birthday last week and my grandad {0} me a new laptop.", [[null,[["gave","has given"],"gave"]]]],
+    ["I don't know who's responsible because I {0} here long.", [[null,[["didn't work","haven't worked"],"haven't worked"]]]],
+    ["My brother and I {0} allowed to chew gum when we were young.", [[null,[["were never","have never been"],"were never"]]]],
+    ["My parents {0} me to a private school until I was 12.", [[null,[["sent","have sent"],"sent"]]]]
+  ]
+},
+B: {
+  instr: "Write the verb in brackets in the correct form, past simple or past continuous, in each gap. You may have to use the passive form.",
+  items: [
+    ["When the explosion happened, hundreds of people {0} through the airport.", [["pass","were passing"]]],
+    ["When I heard the phone ring, I {0} writing to answer it.", [["stop","stopped"]]],
+    ["Amy {0}, so she didn't see me walking past.", [["read","was reading"]]],
+    ["I {0} piano lessons every week from the age of six onwards.", [["have","had"]]],
+    ["We decided to leave the beach because it {0} dark and we wanted to get home while there was still some light.", [["get","was getting"]]],
+    ["{0} Jessica already {1} of leaving university before she failed her first year exams?", [[null,"Had"],["think","thought"]]],
+    ["Since the hotel had a pool, {0} you {1} every day?", [[null,"did"],["swim","swim"]]],
+    ["The Industrial Revolution {0} many people from the country to the city.", [["attract","attracted"]]],
+    ["The Hubble Space Telescope {0} into orbit around the Earth in 1990.", [["put","was put"]]],
+    ["Sorry I couldn't come on Friday, but I {0} on my project.", [["work","was working"]]],
+    ["By the time we {0}, the party was almost over.", [["arrive","arrived"]]],
+    ["The national park {0} to protect local wildlife.", [["create","was created"]]]
+  ]
+},
+C: {
+  instr: "Write a verb from the box in the correct form in each gap.",
+  bank: "appear • check • complete • disappear • get • go • kidnap • look • make • mean • open • press • race • rain • remind • see • start • take • travel • wait • wear • work",
+  passage: true,
+  items: [
+    ["It all {0} as I made my way home from work. We {1} on a top secret computer program, and everyone {2} pretty nervous about finishing on time, so it was good to get away from the office. It {3} and it seemed like everyone {4} home at the same time, anxious to avoid getting wet. I {5} down into the underground station and {6} for the train when I {7} her at the end of the platform. She {8} a red leather jacket that {9} me of something I'd seen in a film, although I couldn't remember when. As I watched, she {10} her handbag and {11} out what looked like a hand-held computer. She {12} something on the screen, then {13} in my direction. Suddenly, my mobile phone {14} a sound that {15} I had a text message. Frowning, I {16} a key and the message {17}. 'We {18} your daughter. We know you {19} the program. Follow the woman in red.' I looked up just as she {20} around the corner. I {21} after her.",
+      [[null,"started"],[null,"had been working"],[null,"was getting"],[null,"was raining"],[null,"was going"],[null,"went"],[null,"waited"],[null,"saw"],[null,"wore"],[null,"reminded"],[null,"opened"],[null,"took"],[null,"checked"],[null,"looked"],[null,"made"],[null,"meant"],[null,"pressed"],[null,"appeared"],[null,["have kidnapped","kidnapped"]],[null,["have completed","completed"]],[null,"disappeared"],[null,"raced"]]]
+  ]
+},
+D: {
+  instr: "One verb in each sentence is in the wrong tense. Type the correction.",
+  erratum: true,
+  items: [
+    ["I've been having a lot of problems with my computer recently and so I got a technician to come and have a look at it, but she <span class='erratum'>has told</span> me that it was because I wasn't using it properly.", "told"],
+    ["<span class='erratum'>It was</span> a few days since I heard from Roger, but he left Russia last Monday and he was planning to arrive in China yesterday, so I called his mum to see if she had heard anything.", "had been"],
+    ["Patricia and I were having a really good discussion when Jason suddenly appeared and decided that he wanted to join in, even though he <span class='erratum'>has known</span> absolutely nothing about what we were talking about.", "knew"],
+    ["I <span class='erratum'>had never been visiting</span> a working prison before, so when the opportunity came up I was really eager to have a look around and I certainly wasn't disappointed, although we weren't actually allowed to see the area where the prisoners live.", "had never visited"],
+    ["Charlie didn't know what Callum had said to Imogen, but he could see immediately that she had been crying and he <span class='erratum'>was putting</span> his arm around her to comfort her, which made her feel a little better.", "put"],
+    ["Although there was no reason to doubt what Alex said, I <span class='erratum'>was ringing</span> Rick to check and he told me that Alex had been right and the concert really had been cancelled because the lead singer had come down with flu.", "rang"],
+    ["The year before, I had given Lisa a CD for her birthday, but this particular year I wanted to surprise her, so I went into town and I was looking round the shops when suddenly I <span class='erratum'>had seen</span> an old-fashioned hat, and it was her size, so I immediately bought it.", "saw"],
+    ["Olivia was cycling to school, as she usually did on those days when her father was working and wasn't able to drive her, when she <span class='erratum'>was passing</span> an old woman, who was waiting for the lights to change so that she could cross the road.", "passed"]
+  ]
+},
+E: {
+  instr: "Write the verb in brackets in the correct form, past continuous or present perfect continuous, in each gap.",
+  items: [
+    ["'Why are you out of breath?' 'Because I {0} for the last hour.'", [["exercise","have been exercising"]]],
+    ["'Your light was on when I walked past last night.' 'Yes, I {0} online to my cousin in Australia.'", [["chat","was chatting"]]],
+    ["'You've really improved on the flute.' 'Well, I hope so because I {0} a lot lately.'", [["practise","have been practising"]]],
+    ["'You're not jealous of my other friends, are you?' 'No, but you {0} quite a lot of them recently.'", [["see","have been seeing"]]],
+    ["'I didn't wake you up, did I?' 'No, I {0}.'", [["sleep","wasn't sleeping"]]],
+    ["'Did you quit your job in the end?' 'I {0} of doing so for a long time, but then I decided not to.'", [["think","had been thinking"]]],
+    ["'Why is your street such a mess?' 'Oh, the council {0} up the roads, but they should finish this weekend.'", [["dig","have been digging"]]]
+  ]
+},
+F: {
+  instr: "Write one verb in each sentence in the past simple and the other verb in the past perfect.",
+  items: [
+    ["The ambulance {0} by the time the reporters {1} to the scene of the accident.", [["left","had left"],["get","got"]]],
+    ["Before I {0} Dr Christian, I {1} a number of different specialists.", [["meet","met"],["see","had seen"]]],
+    ["It {0} only the second time I {1} in a helicopter.", [["be","was"],["ever / be","had ever been"]]],
+    ["Up to the moment when Mr O'Donnell {0} 'You're fired', I {1} no idea why he wanted to see me.", [["say","said"],["have","had had"]]],
+    ["When Tonya {0} eating, she {1} the waiter to bring the bill.", [["finished","had finished"],["ask","asked"]]],
+    ["Luckily, I {0} the end of my essay when the teacher {1} us all to put our pens down.", [["just / reach","had just reached"],["tell","told"]]],
+    ["We {0} everything we had to do by five, so we {1} to go out for a coffee.", [["do","had done"],["decide","decided"]]],
+    ["I {0} Mrs Thomas's young son to touch my ornaments because I {1} them.", [["want","didn't want"],["just / clean","had just cleaned"]]],
+    ["My mum {0} annoyed with me because I {1} to get milk when I was at the shop.", [["be","was"],["forget","had forgotten"]]],
+    ["I {0} Janine a book for her birthday, but she {1} it before.", [["get","got"],["read","had read"]]]
+  ]
+},
+G: {
+  instr: "If a word or phrase in bold is in the correct form, put a tick (retype it as-is). If it is incorrect, type the correct form.",
+  erratum: true,
+  items: [
+    ["People <span class='erratum'>have been dreaming</span> of having a personal means of communication for a long time.", "have been dreaming"],
+    ["In the late 1960s, the idea <span class='erratum'>had seemed</span> so far in the future that it was included in the science fiction series, Star Trek.", "seemed"],
+    ["…that it <span class='erratum'>was included</span> in the science fiction series, Star Trek.", "was included"],
+    ["Since the 1980s, however, mobiles <span class='erratum'>became</span> a part of everyday life.", "have become"],
+    ["Although they <span class='erratum'>were initially seen</span> as a status symbol for successful business people…", "were initially seen"],
+    ["…mobile use <span class='erratum'>had spread</span> to include practically everyone in the developed world.", "has spread"],
+    ["The impact on social life <span class='erratum'>had been</span> enormous.", "has been"],
+    ["there were many occasions when friends who <span class='erratum'>had arranged</span> to meet completely missed each other…", "had arranged"],
+    ["…friends who had arranged to meet completely <span class='erratum'>had missed</span> each other because of a slight misunderstanding.", "missed"],
+    ["As mobiles <span class='erratum'>have been becoming</span> more popular, so they have become more powerful.", "have been becoming"],
+    ["…so they <span class='erratum'>have become</span> more powerful.", "have become"],
+    ["The large, unreliable mobile phone of the 1980s <span class='erratum'>has evolved</span> into the small, stylish camera phone of today.", "has evolved"]
+  ]
+},
+H: {
+  instr: "Complete the second sentence so that it has a similar meaning to the first, using the word given.",
+  items: [
+    ["I started working at eight and I was still working at six in the evening, when you called. (been) &rarr; When you called, {0} ten hours.", [[null,["I had been working for","I'd been working for"]]]],
+    ["We often went to the seaside with our grandparents as children. (would) &rarr; Our grandparents {0} to the seaside as children.", [[null,"would take us"]]],
+    ["It's about seven years now since Laura started to learn Russian. (learning) &rarr; Laura {0} seven years.", [[null,["has been learning Russian for","has been learning for"]]]],
+    ["Being with the older children soon stopped being frightening when I went to secondary school. (used) &rarr; Secondary school was frightening, but I {0} with the older children.", [[null,["soon got used to being","got used to being"]]]],
+    ["Every night for the past week I have had the same dream. (having) &rarr; I {0} for a week now.", [[null,["have been having the same dream","'ve been having the same dream"]]]],
+    ["I always disliked karate lessons but now I'm starting to enjoy them. (used) &rarr; I {0} karate lessons, but now I'm starting to.", [[null,"never used to like"]]]
+  ]
+},
+I: {
+  instr: "Write one word in each gap.",
+  passage: true,
+  items: [
+    ["Because the pencil {0} become such a fundamental part of our lives, it's difficult to remember that people {1} not been using them forever. Like other products of human ingenuity, pencils had to be invented. Before the first half of the sixteenth century, people {2} to use pens to write with and brushes to paint with. It {3} also possible to use a metal stick to make faint marks on paper. However, up to that point no one {4} found an easy way to make marks that could be erased. Then, some time before 1565, a large deposit of the chemical, graphite, {5} found near Borrowdale in Cumbria, England. The locals {6} use this graphite (a kind of soft black rock) to mark sheep. Soon, tales of this unusual soft substance {7} spread to artists around the world, who were eager to use it to produce works of art. Graphite is soft and dirty, and in order to write or draw with it, it {8} to have to be covered in something, such as sheepskin or string. People had {9} trying to improve the pencil for some time before manufacturers in Italy came up with the idea of enclosing the graphite in a wooden case.",
+      [[null,"has"],[null,["haven't","hadn't"]],[null,"used"],[null,"was"],[null,"had"],[null,"was"],[null,["used to","would"]],[null,"had"],[null,"used"],[null,"been"]]]
+  ]
+},
+J: {
+  instr: "Choose the correct answer.",
+  choice: true,
+  items: [
+    ["How long {0} before Val finally turned up?", [[null,[["have you been waiting","are you waiting","you waited","had you been waiting"],"had you been waiting"]]]],
+    ["You {0} be so good at backgammon, did you?", [[null,[["never used to","got used to","are used to","wouldn't"],"never used to"]]]],
+    ["Could you tell me, sir, what you {0} in the park at three in the morning?", [[null,[["have done","have been doing","were doing","had done"],"were doing"]]]],
+    ["I was angry when you saw me because I {0} with my sister.", [[null,[["have been arguing","argued","had been arguing","would argue"],"had been arguing"]]]],
+    ["The Black Pirate {0} over a million copies already this year.", [[null,[["had sold","has sold","had been selling","was selling"],"has sold"]]]],
+    ["Don't throw the paper away because I {0} it yet.", [[null,[["haven't read","hadn't read","haven't been reading","hadn't been reading"],"haven't read"]]]],
+    ["By the time we arrived, the film {0}.", [[null,[["has already started","would already start","already started","had already started"],"had already started"]]]],
+    ["We had to walk home in the end because Jimmy {0} his car keys.", [[null,[["has been losing","had lost","was losing","had been losing"],"had lost"]]]],
+    ["It took Edward a long time to {0} living in Canada.", [[null,[["be used to","used to","get used to","be used"],"get used to"]]]],
+    ["I'd love to have lived in the old days, when people {0} to market by horse and carriage.", [[null,[["have been travelling","would travel","got used to travelling","had been travelling"],"would travel"]]]],
+    ["I much preferred it when we {0} to Wales every summer on holiday.", [[null,[["used to go","were used to going","had gone","have been going"],"used to go"]]]],
+    ["Your teacher called me today and said that you {0} in the playground again.", [[null,[["had been fighting","used to fight","have fought","would fight"],"had been fighting"]]]]
+  ]
 }
+  }
+}
+];
+
+let currentUnitIdx = 0;
+let currentTab = 'ref';
+const checkedState = {}; // "unitId-exId" -> {correct,total}
+
+/* ============ HELPERS ============ */
+function norm(s){ return s.toLowerCase().replace(/['’]/g,"'").replace(/\s+/g," ").trim(); }
 function matches(userVal, ans){
   const u = norm(userVal);
   if(!u) return false;
@@ -353,38 +524,54 @@ function matches(userVal, ans){
   return list.some(a => norm(a) === u);
 }
 
-/* ================= RENDER ================= */
+function currentUnit(){ return UNITS[currentUnitIdx]; }
+function tabOrder(){ return ['ref', ...Object.keys(currentUnit().exercises)]; }
+
+/* ============ RENDER: SHELL ============ */
+function populateUnitSelect(){
+  const sel = document.getElementById('unitSelect');
+  sel.innerHTML = '';
+  UNITS.forEach((u,i)=>{
+    const opt = document.createElement('option');
+    opt.value = i; opt.textContent = u.title;
+    sel.appendChild(opt);
+  });
+  sel.value = currentUnitIdx;
+  sel.onchange = ()=>{
+    currentUnitIdx = parseInt(sel.value,10);
+    currentTab = 'ref';
+    renderTabs();
+    showTab('ref');
+  };
+}
 
 function renderTabs(){
   const nav = document.getElementById('tabs');
   nav.innerHTML = '';
-  ORDER.forEach(id=>{
+  tabOrder().forEach(id=>{
     const btn = document.createElement('button');
-    const done = checkedState[id];
-    btn.innerHTML = LABELS[id] + '<span class="dot' + (done ? ' done' : '') + '"></span>';
+    const key = currentUnit().id + '-' + id;
+    const done = checkedState[key];
+    btn.innerHTML = (id==='ref' ? 'Reference' : id) + '<span class="dot' + (done?' done':'') + '"></span>';
     btn.dataset.id = id;
     btn.onclick = ()=> showTab(id);
     nav.appendChild(btn);
   });
   updateActiveTab();
+  updateScoreBox();
 }
-
 function updateActiveTab(){
-  document.querySelectorAll('nav.tabs button').forEach(b=>{
-    b.classList.toggle('active', b.dataset.id === currentTab);
-  });
+  document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.toggle('active', b.dataset.id===currentTab));
 }
-
 function updateScoreBox(){
-  const ids = Object.keys(checkedState);
-  let correct=0, total=0;
-  ids.forEach(id=>{ correct += checkedState[id].correct; total += checkedState[id].total; });
+  const u = currentUnit();
+  const ids = Object.keys(u.exercises).map(id=>u.id+'-'+id);
+  let done=0, correct=0, total=0;
+  ids.forEach(k=>{ if(checkedState[k]){ done++; correct+=checkedState[k].correct; total+=checkedState[k].total; } });
   const pct = total ? Math.round(100*correct/total) : 0;
   document.getElementById('scoreBox').textContent =
-    ids.length + ' / 10 exercises checked' + (total ? ' · ' + correct + '/' + total + ' correct (' + pct + '%)' : '');
+    done + ' / ' + ids.length + ' exercises checked' + (total ? ' · ' + correct + '/' + total + ' (' + pct + '%)' : '');
 }
-
-let currentTab = 'ref';
 
 function showTab(id){
   currentTab = id;
@@ -392,188 +579,103 @@ function showTab(id){
   const content = document.getElementById('content');
   content.innerHTML = '';
   if(id === 'ref'){
-    content.appendChild(buildReference());
+    const div = document.createElement('div');
+    div.className = 'panel ref';
+    div.innerHTML = currentUnit().ref;
+    content.appendChild(div);
   } else {
     content.appendChild(buildExercise(id));
   }
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
-function buildReference(){
-  const div = document.createElement('div');
-  div.className = 'panel ref';
-  div.innerHTML = `
-    <h3 class="pill">Present perfect simple</h3>
-    <table class="ref-table">
-      <tr><td>Situations and states that started in the past and are still true</td><td>I've been a member of MENSA for over five years.</td></tr>
-      <tr><td>A series of actions continuing up to now</td><td>She's done a BA, an MA and a PhD so far.</td></tr>
-      <tr><td>Completed actions at a time in the past which is not important or relevant</td><td>Have you ever read any books by Edward De Bono?</td></tr>
-      <tr><td>Completed actions where the important thing is the present result</td><td>She's been awarded a scholarship to study at Harvard.</td></tr>
-      <tr><td>Actions completed recently</td><td>I've just received my exam results.</td></tr>
-      <tr><td>The future (in time clauses) — see Unit 5</td><td>Tell me when you've finished the report.</td></tr>
-    </table>
-    <div class="box"><b>Words &amp; phrases often used with it:</b> since / for / it's the first/second/etc time / before / already / yet / ever / just / still / recently / up to now / (up) until now / so far</div>
-    <div class="us-uk"><div class="h">US vs UK grammar</div>
-      In American English the past simple is often used instead of the present perfect simple.<br>
-      US: <i>Did you find the answer yet?</i> &nbsp; UK: <i>Have you found the answer yet?</i><br>
-      US: <i>I already found the answer.</i> &nbsp; UK: <i>I've already found the answer.</i><br><br>
-      In informal American English, <i>gotten</i> is sometimes used instead of <i>got</i> (obtain / become / move).<br>
-      US: <i>I haven't gotten the books yet.</i> &nbsp; UK: <i>I haven't got the books yet.</i>
-    </div>
-
-    <h3 class="pill">Present perfect continuous</h3>
-    <table class="ref-table">
-      <tr><td>Actions/situations continuing up to the present (or just before it)</td><td>We've all been wondering what to get Tony for his birthday and we just can't decide.</td></tr>
-      <tr><td>The future (in time clauses) — see Unit 5</td><td>I won't take my driving test until I've been having lessons for at least two months.</td></tr>
-    </table>
-    <div class="watch"><div class="tag">Watch out!</div><div class="body"><ul>
-      <li>We usually use the present perfect <b>simple</b> to specify a particular number of times/things. ✓ I've written two essays this week.</li>
-      <li>We usually use the present perfect <b>continuous</b> to emphasise duration. ✓ I've worked here for five years (no emphasis) vs I've been working here for five years (emphasises duration).</li>
-    </ul></div></div>
-    <div class="box"><b>Words &amp; phrases often used with it:</b> since / for / just / all day/week/etc</div>
-
-    <h3 class="pill">Stative and non-stative uses of verbs</h3>
-    <div class="box">When certain verbs describe states, they're generally used in simple tenses rather than continuous tenses.</div>
-    <table class="ref-table">
-      <tr><td>Communication</td><td>agree, deny, disagree</td></tr>
-      <tr><td>Thinking</td><td>believe, consider, doubt, expect, imagine, know, mean, realise, suppose, suspect, think, understand</td></tr>
-      <tr><td>Existence</td><td>be, exist</td></tr>
-      <tr><td>Emotions</td><td>adore, appeal, appreciate, desire, despise, detest, dislike, envy, fear, feel, forgive, hate, like, love, mind, need, pity, prefer, satisfy, trust, want, wish</td></tr>
-      <tr><td>Perception</td><td>appear, hear, look, notice, recognise, resemble, see, seem, smell, sound, taste</td></tr>
-      <tr><td>Possession &amp; relationships</td><td>belong, concern, consist, contain, cost, depend, equal, fit, have, include, involve, lack, measure, owe, own, possess, suit, weigh</td></tr>
-      <tr><td>Other</td><td>deserve, matter</td></tr>
-    </table>
-    <div class="watch"><div class="tag">Watch out!</div><div class="body">
-      Many of these can also be used in continuous tenses when they describe actions rather than states: appeal, be, consider, depend, feel, have, include, look, mean, mind, see, smell, taste, think, weigh.<br>
-      ✓ I think it's important to know how to use a computer. (state: think = believe)<br>
-      ✓ I'm thinking about going on a computer course. (action: think = consider)
-    </div></div>
-  `;
-  return div;
-}
-
-function buildBlankInput(hint, ans, idx, key){
+/* ============ RENDER: EXERCISES ============ */
+function buildBlankInput(hint, ans){
   const wrap = document.createElement('span');
   wrap.className = 'blank-wrap';
   if(hint){
-    const h = document.createElement('span');
-    h.className = 'hint';
-    h.textContent = '(' + hint + ')';
+    const h = document.createElement('span'); h.className='hint'; h.textContent = '(' + hint + ')';
     wrap.appendChild(h);
   }
   const input = document.createElement('input');
-  input.type = 'text';
-  input.className = 'blank';
-  input.autocomplete = 'off';
-  input.spellcheck = false;
-  input.dataset.key = key;
-  input.dataset.idx = idx;
+  input.type='text'; input.className='blank'; input.autocomplete='off'; input.spellcheck=false;
   input.size = Math.max(6, (Array.isArray(ans)?ans[0]:ans).length);
   wrap.appendChild(input);
-  const corr = document.createElement('span');
-  corr.className = 'correction';
-  corr.style.display = 'none';
+  const corr = document.createElement('span'); corr.className='correction'; corr.style.display='none';
   wrap.appendChild(corr);
+  return wrap;
+}
+function buildChoiceGroup(options, correct){
+  const wrap = document.createElement('span');
+  wrap.className = 'choice-wrap'; wrap.dataset.selected='';
+  options.forEach(opt=>{
+    const b=document.createElement('button'); b.type='button'; b.className='choice-btn'; b.textContent=opt;
+    b.onclick=()=>{ wrap.querySelectorAll('.choice-btn').forEach(x=>x.classList.remove('selected')); b.classList.add('selected'); wrap.dataset.selected=opt; };
+    wrap.appendChild(b);
+  });
   return wrap;
 }
 
 function buildExercise(id){
-  const ex = EXERCISES[id];
+  const ex = currentUnit().exercises[id];
   const div = document.createElement('div');
   div.className = 'panel';
   const head = document.createElement('div');
   head.className = 'exercise-head';
-  head.innerHTML = '<span class="letter">' + id + '</span><span class="instr">' + ex.instr + '</span>';
+  head.innerHTML = '<span class="letter">'+id+'</span><span class="instr">'+ex.instr+'</span>';
   div.appendChild(head);
-
   if(ex.bank){
-    const bank = document.createElement('div');
-    bank.className = 'wordbank';
-    bank.textContent = ex.bank;
-    div.appendChild(bank);
+    const bank=document.createElement('div'); bank.className='wordbank'; bank.textContent=ex.bank; div.appendChild(bank);
   }
-
-  const answerRegistry = []; // {answers, blankEl-input}
-  let blankCounter = 0;
-
+  const answerRegistry = [];
   const container = document.createElement('div');
   container.className = ex.dialogue ? 'dialogue' : (ex.passage ? 'item' : '');
 
   ex.items.forEach((itemDef, itemIdx)=>{
     let node;
     if(ex.erratum){
-      // F-style: [sentenceHTML, answer]
       const [html, ans] = itemDef;
-      node = document.createElement('div');
-      node.className = 'item';
-      const num = document.createElement('span');
-      num.className = 'num';
-      num.textContent = (itemIdx+1) + '.';
-      node.appendChild(num);
-      const span = document.createElement('span');
-      span.innerHTML = html + '  →  ';
-      node.appendChild(span);
-      const key = id + '-' + itemIdx;
-      const blankWrap = buildBlankInput(null, ans, itemIdx, key);
-      answerRegistry.push({key, answers:[ans], input: blankWrap.querySelector('input')});
+      node = document.createElement('div'); node.className='item';
+      const num=document.createElement('span'); num.className='num'; num.textContent=(itemIdx+1)+'.'; node.appendChild(num);
+      const span=document.createElement('span'); span.innerHTML = html + '  →  '; node.appendChild(span);
+      const blankWrap = buildBlankInput(null, ans);
+      answerRegistry.push({answers:[ans], input: blankWrap.querySelector('input')});
       node.appendChild(blankWrap);
     } else {
       const [template, blanks] = itemDef;
-      let html = template;
       const inputsForItem = [];
-      blanks.forEach((b, bIdx)=>{
+      blanks.forEach(b=>{
         const [hint, ansOrChoice] = b;
-        const key = id + '-' + itemIdx + '-' + bIdx;
         let el;
         if(ex.choice){
-          // ansOrChoice = [options[], correctAnswer(s)]
           const [options, correct] = ansOrChoice;
-          el = buildChoiceGroup(options, correct, key);
-          answerRegistry.push({key, choice:true, correct, el});
+          el = buildChoiceGroup(options, correct);
+          answerRegistry.push({choice:true, correct, el});
         } else {
-          const wrap = buildBlankInput(hint, ansOrChoice, bIdx, key);
-          answerRegistry.push({key, answers:[ansOrChoice], input: wrap.querySelector('input')});
+          const wrap = buildBlankInput(hint, ansOrChoice);
+          answerRegistry.push({answers:[ansOrChoice], input: wrap.querySelector('input')});
           el = wrap;
         }
         inputsForItem.push(el);
       });
-      // build node by replacing {0},{1}... in template with placeholders, then swap
       node = document.createElement('div');
       node.className = ex.dialogue ? '' : 'item';
-      let numPrefix = '';
-      if(!ex.dialogue && !ex.passage){
-        numPrefix = '<span class="num">' + (itemIdx+1) + '.</span> ';
-      }
-      const parts = html.split(/\{(\d+)\}/g);
-      const frag = document.createElement('span');
-      frag.innerHTML = numPrefix;
-      node.appendChild(frag);
-      parts.forEach((part, i)=>{
-        if(i % 2 === 0){
-          const span = document.createElement('span');
-          span.innerHTML = part;
-          node.appendChild(span);
-        } else {
-          const bIdx = parseInt(part,10);
-          node.appendChild(inputsForItem[bIdx]);
-        }
+      let numPrefix = (!ex.dialogue && !ex.passage) ? '<span class="num">'+(itemIdx+1)+'.</span> ' : '';
+      const frag = document.createElement('span'); frag.innerHTML = numPrefix; node.appendChild(frag);
+      const parts = template.split(/\{(\d+)\}/g);
+      parts.forEach((part,i)=>{
+        if(i%2===0){ const span=document.createElement('span'); span.innerHTML=part; node.appendChild(span); }
+        else { node.appendChild(inputsForItem[parseInt(part,10)]); }
       });
     }
     container.appendChild(node);
   });
-
   div.appendChild(container);
 
-  const actions = document.createElement('div');
-  actions.className = 'actions';
-  const btn = document.createElement('button');
-  btn.className = 'check';
-  btn.textContent = 'Check answers';
-  const result = document.createElement('span');
-  result.className = 'result';
-  actions.appendChild(btn);
-  actions.appendChild(result);
-  div.appendChild(actions);
+  const actions=document.createElement('div'); actions.className='actions';
+  const btn=document.createElement('button'); btn.className='check'; btn.textContent='Check answers';
+  const result=document.createElement('span'); result.className='result';
+  actions.appendChild(btn); actions.appendChild(result); div.appendChild(actions);
 
   btn.onclick = ()=>{
     let correct=0, total=0;
@@ -586,10 +688,8 @@ function buildExercise(id){
           cb.classList.remove('correct','incorrect');
           const isCorrectOpt = matches(cb.textContent, entry.correct);
           if(selected){
-            if(cb.textContent === selected){
-              cb.classList.add(ok ? 'correct' : 'incorrect');
-            }
-            if(!ok && isCorrectOpt){ cb.classList.add('correct'); }
+            if(cb.textContent===selected) cb.classList.add(ok?'correct':'incorrect');
+            if(!ok && isCorrectOpt) cb.classList.add('correct');
           }
         });
         if(ok) correct++;
@@ -597,48 +697,25 @@ function buildExercise(id){
         const val = entry.input.value;
         const ok = matches(val, entry.answers[0]);
         entry.input.classList.remove('correct','incorrect');
-        entry.input.classList.add(ok ? 'correct' : 'incorrect');
+        entry.input.classList.add(ok?'correct':'incorrect');
         const corrSpan = entry.input.parentElement.querySelector('.correction');
         if(!ok){
           const answerList = Array.isArray(entry.answers[0]) ? entry.answers[0].join(' / ') : entry.answers[0];
-          corrSpan.textContent = '✓ ' + answerList;
-          corrSpan.style.display = 'block';
-        } else {
-          corrSpan.style.display = 'none';
-        }
+          corrSpan.textContent = '✓ ' + answerList; corrSpan.style.display='block';
+        } else { corrSpan.style.display='none'; }
         if(ok) correct++;
       }
     });
-    result.textContent = correct + ' / ' + total + ' correct';
-    result.className = 'result ' + (correct===total ? 'good' : (correct===0 ? 'bad' : ''));
-    checkedState[id] = {correct, total};
+    result.textContent = correct+' / '+total+' correct';
+    result.className = 'result ' + (correct===total?'good':(correct===0?'bad':''));
+    checkedState[currentUnit().id+'-'+id] = {correct, total};
     renderTabs();
-    updateScoreBox();
   };
-
   return div;
 }
 
-function buildChoiceGroup(options, correct, key){
-  const wrap = document.createElement('span');
-  wrap.className = 'choice-wrap';
-  wrap.dataset.selected = '';
-  options.forEach(opt=>{
-    const b = document.createElement('button');
-    b.type = 'button';
-    b.className = 'choice-btn';
-    b.textContent = opt;
-    b.onclick = ()=>{
-      wrap.querySelectorAll('.choice-btn').forEach(x=>x.classList.remove('selected'));
-      b.classList.add('selected');
-      wrap.dataset.selected = opt;
-    };
-    wrap.appendChild(b);
-  });
-  return wrap;
-}
-
-/* ================= INIT ================= */
+/* ============ INIT ============ */
+populateUnitSelect();
 renderTabs();
 showTab('ref');
 </script>
