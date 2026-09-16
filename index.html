@@ -5,6 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Destination C1&C2 — Grammar Units</title>
 <style>
+  /* Khung Layout Sidebar & Main Content */
+.app-container { display: flex; min-height: calc(100vh - 50px); }
+.sidebar { width: 230px; background: #fff; border-right: 1px solid var(--line); height: calc(100vh - 50px); position: sticky; top: 50px; padding: 15px 10px; flex-shrink: 0; }
+.nav-item { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 10px 12px; background: none; border: none; font-size: 15px; font-weight: 600; color: var(--ink); border-radius: 8px; cursor: pointer; text-align: left; margin-bottom: 4px; }
+.nav-item:hover, .nav-item.active { background: var(--green-pale); color: var(--green-dark); }
+
+/* Menu cấp 1 (Xổ ra Destination) */
+.sub-menu-level1 { padding-left: 15px; display: none; }
+.sub-menu-level1.open { display: block; }
+
+/* Menu cấp 2 (Xổ ra B1, B2, C1&C2) */
+.sub-menu-level2 { padding-left: 15px; display: none; }
+.sub-menu-level2.open { display: block; }
+
+.sub-item { display: block; width: 100%; padding: 7px 10px; background: none; border: none; font-size: 13.5px; color: var(--muted); text-align: left; cursor: pointer; border-radius: 4px; }
+.sub-item:hover { color: var(--green-dark); font-weight: bold; }
+
+/* Quản lý Ẩn/Hiện Trang */
+.main-content { flex: 1; padding: 20px 30px; }
+.page-view { display: none; }
+.page-view.active { display: block; }
+
+/* Giao diện Bảng Tiến Độ */
+.dashboard-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; margin-top: 20px; }
+.stat-card { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+.streak-num { font-size: 36px; font-weight: bold; color: var(--green-dark); text-align: center; }
+.week-calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-top: 15px; }
+.day-col { text-align: center; background: #f8faf6; border: 1px solid var(--line); padding: 10px 4px; border-radius: 8px; }
+.day-col.active-day { background: var(--green-pale); border-color: var(--green); font-weight: bold; }
   :root{
     --green:#4f8a2f; --green-dark:#2f5a1c; --green-pale:#eaf4e2; --line:#cfe3c2;
     --ink:#20291a; --paper:#ffffff; --bad:#b4362a; --bad-bg:#fbeae8;
@@ -72,20 +101,127 @@
 </style>
 </head>
 <body>
+  <!-- HEADER TRÊN CÙNG -->
+  <header class="top" style="position:sticky; top:0; z-index:30;">
+    <div style="font-weight:bold; font-size:18px;">[Eng-nonstop]</div>
+    <div style="display:flex; gap:12px;">
+      <button style="background:none; border:none; color:#fff; cursor:pointer;">🎙️</button>
+      <button style="background:none; border:none; color:#fff; cursor:pointer;">📋</button>
+      <button style="background:none; border:none; color:#fff; cursor:pointer;">✏️</button>
+      <button style="background:none; border:none; color:#fff; cursor:pointer;">📊</button>
+      <button style="background:none; border:none; color:#fff; cursor:pointer;">👤</button>
+    </div>
+  </header>
 
-<header class="top">
-  <div class="left">
-    <span style="font-weight:700;font-size:16px;">Destination C1&amp;C2</span>
-    <select id="unitSelect"></select>
+  <div class="app-container">
+    <!-- SIDEBAR DỌC BÊN TRÁI -->
+    <aside class="sidebar">
+      <button class="nav-item active" onclick="switchPage('page-home')">
+        <span>🏠 Trang Chủ</span>
+      </button>
+      
+      <!-- CẤP 1: NGỮ PHÁP (Click mới hiện Destination) -->
+      <button class="nav-item" onclick="toggleMenu('grammar-sub')">
+        <span>📚 Ngữ Pháp</span>
+        <small>▾</small>
+      </button>
+      
+      <!-- CẤP 2: DESTINATION (Click mới hiện B1, B2, C1-C2) -->
+      <div id="grammar-sub" class="sub-menu-level1">
+        <button class="sub-item" style="font-weight: bold; color: var(--ink);" onclick="toggleMenu('dest-sub')">
+          📘 Destination ▾
+        </button>
+        
+        <!-- CẤP 3: DỰ ÁN SÁCH -->
+        <div id="dest-sub" class="sub-menu-level2">
+          <button class="sub-item" onclick="alert('Destination B1 đang cập nhật')">• Destination B1</button>
+          <button class="sub-item" onclick="alert('Destination B2 đang cập nhật')">• Destination B2</button>
+          <button class="sub-item" style="color:var(--green-dark); font-weight:bold;" onclick="openC1C2App()">• Destination C1&C2</button>
+        </div>
+      </div>
+
+      <button class="nav-item" onclick="alert('Mục Từ vựng đang được xây dựng!')">
+        <span>🔤 Từ Vựng</span>
+      </button>
+      
+      <button class="nav-item" style="margin-top: auto;">
+        <span>⚙️ Cài Đặt</span>
+      </button>
+    </aside>
+
+    <!-- KHU VỰC HIỂN THỊ NỘI DUNG -->
+    <main class="main-content">
+      
+      <!-- 1. TRANG CHỦ: BẢNG TIẾN ĐỘ HỌC TẬP -->
+      <div id="page-home" class="page-view active">
+        <h2 style="margin-top:0;">BẢNG TIẾN ĐỘ HỌC TẬP</h2>
+        
+        <div class="dashboard-grid">
+          <div class="stat-card" style="text-align:center;">
+            <div style="font-size: 30px;">🔥</div>
+            <div class="streak-num">7 Ngày</div>
+            <div style="color: var(--muted); font-size: 14px;">Chuỗi ngày học liên tục</div>
+          </div>
+
+          <div class="stat-card">
+            <div style="font-weight: bold; margin-bottom: 5px;">Lịch Theo Dõi Học Tập (Tuần này)</div>
+            <div class="week-calendar">
+              <div class="day-col active-day"><div>T2</div><div style="font-size:18px;">✅</div></div>
+              <div class="day-col active-day"><div>T3</div><div style="font-size:18px;">✅</div></div>
+              <div class="day-col active-day"><div>T4</div><div style="font-size:18px;">✅</div></div>
+              <div class="day-col"><div>T5</div><div style="font-size:18px;">⚪</div></div>
+              <div class="day-col"><div>T6</div><div style="font-size:18px;">⚪</div></div>
+              <div class="day-col"><div>T7</div><div style="font-size:18px;">⚪</div></div>
+              <div class="day-col"><div>CN</div><div style="font-size:18px;">⚪</div></div>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="margin-top:30px;">Sách Ngữ Pháp Destination</h3>
+        <div style="display:flex; gap:15px;">
+          <div onclick="openC1C2App()" style="cursor:pointer; background:#fff; border:1px solid var(--line); border-radius:10px; padding:15px; width:180px; text-align:center;">
+            <div style="background:var(--green-dark); color:#fff; padding:15px; border-radius:8px; font-weight:bold;">C1-C2</div>
+            <p style="font-weight:bold; margin:10px 0 0;">Destination C1&C2</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. BÀI HỌC C1-C2 (Chứa toàn bộ code bài tập cũ) -->
+      <div id="page-lesson-app" class="page-view">
+        <button onclick="switchPage('page-home')" style="margin-bottom:10px; cursor:pointer;">← Quay lại Trang Chủ</button>
+        
+        <header class="top" style="background:var(--green-dark); color:#fff; padding:12px 18px; display:flex; justify-content:space-between; border-radius:8px;">
+          <div class="left">
+            <span style="font-weight:700;">Destination C1&amp;C2</span>
+            <select id="unitSelect"></select>
+          </div>
+          <div class="score" id="scoreBox">0 / 10 exercises checked</div>
+        </header>
+        <nav class="tabs" id="tabs"></nav>
+        <div id="content"></div>
+      </div>
+
+    </main>
   </div>
-  <div class="score" id="scoreBox">0 / 10 exercises checked</div>
-</header>
 
-<nav class="tabs" id="tabs"></nav>
-<main id="content"></main>
-<footer class="foot">Digitised from Destination C1&amp;C2 (Mann &amp; Taylore-Knowles) for personal study use.</footer>
-
+  <footer class="foot">Digitised from Destination C1&amp;C2 (Mann &amp; Taylore-Knowles) for personal study use.</footer>
+</body>
 <script>
+  // HÀM ĐIỀU HƯỚNG SIDEBAR VÀ TRANG CHỦ
+function toggleMenu(menuId) {
+  const menu = document.getElementById(menuId);
+  if(menu) menu.classList.toggle('open');
+}
+
+function switchPage(pageId) {
+  document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById(pageId);
+  if(target) target.classList.add('active');
+}
+
+function openC1C2App() {
+  switchPage('page-lesson-app');
+}
 /* ============ REFERENCE HTML PER UNIT ============ */
 
 const REF_1 = `
